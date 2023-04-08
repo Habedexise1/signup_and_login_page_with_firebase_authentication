@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:signup_and_login_page_with_firebase_authentication/screens/home_screen.dart';
 import 'package:signup_and_login_page_with_firebase_authentication/screens/registration_screen.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -71,7 +72,14 @@ class _LogInScreenState extends State<LogInScreen> {
       child: MaterialButton(
         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomeScreen(),
+            ),
+          );
+        },
         child: Text(
           'Login',
           textAlign: TextAlign.center,
