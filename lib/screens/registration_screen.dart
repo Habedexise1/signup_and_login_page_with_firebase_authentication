@@ -29,7 +29,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       controller: firstNameEditingController,
       keyboardType: TextInputType.name,
 
-      //validator:() {},
+       validator: (value) {
+        RegExp regex = new RegExp(r'^.{3,}$');
+        if (value!.isEmpty) {
+          return ("Firest name can not be empty");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Enter Valid name (Min. 3 Character)");
+        }
+      },
       onSaved: (value) {
         firstNameEditingController.text = value!;
       },
@@ -50,7 +58,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       controller: SecondNameEditingController,
       keyboardType: TextInputType.name,
 
-      //validator:() {},
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{3,}$');
+        if (value!.isEmpty) {
+          return ("Firest name can not be empty");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Enter Valid name (Min. 3 Character)");
+        }
+      },
       onSaved: (value) {
         SecondNameEditingController.text = value!;
       },
@@ -213,4 +229,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       ),
     );
   }
+
+
+
+
+  void signUp(String email, String password)
 }
