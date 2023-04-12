@@ -37,7 +37,7 @@ class _LogInScreenState extends State<LogInScreen> {
         if (value!.isEmpty) {
           return ("Please Enter your Email");
         }
-        if (!RegExp("[a-zA-Z0-9+_.-]+A[a-zA-Z0-9]+.[a-z]").hasMatch(value)) {
+        if (!RegExp("[a-zA-Z0-9+_.-]+@[a-zA-Z0-9]+.[a-z]").hasMatch(value)) {
           return ("Please Enter a valid Email");
         }
         return null;
@@ -55,7 +55,7 @@ class _LogInScreenState extends State<LogInScreen> {
         ),
       ),
     );
-    //email field
+    //password field
     final passwordField = TextFormField(
       autofocus: false,
       controller: passwordController,
@@ -66,7 +66,7 @@ class _LogInScreenState extends State<LogInScreen> {
           return ("Password is required for Login");
         }
         if (!regex.hasMatch(value)) {
-          return ("Please Enter Valid Password (Min. 6 Character)");
+          return ("Enter Valid Password (Min. 6 Character)");
         }
       },
       onSaved: (value) {
@@ -93,12 +93,7 @@ class _LogInScreenState extends State<LogInScreen> {
         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
         onPressed: () {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => HomeScreen(),
-            ),
-          );
+          signIn(emailController.text, passwordController.text);
         },
         child: Text(
           'Login',
